@@ -45,11 +45,7 @@ export default class Sketch {
 
       //particles geometry
       this.particleGeometry = new THREE.BufferGeometry();
-      this.particlesMaterial = new THREE.ShaderMaterial(
-        {
-            vertexShader: vertex,
-            fragmentShader: fragment,
-        });
+      
 
       /**
        * Materials
