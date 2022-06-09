@@ -5,9 +5,12 @@ import fragment from '../shaders/fragment.glsl';
 export default class Sketch {
     constructor(options) {
       this.time = 0
+      this.particleTexture = new THREE.TextureLoader().load( './images/1.png' )
+      console.log ( this.particleTexture )
       this.dom = options.dom
       this.scene = new THREE.Scene()
       this.color = options.color
+      this.color2 = options.color2
       this.width = this.dom.offsetWidth
       this.height = this.dom.offsetHeight
   
@@ -40,7 +43,7 @@ export default class Sketch {
        * Geometries
        */
 
-      this.planeGeometry = new THREE.PlaneBufferGeometry( 2, 2, 50, 50 )
+      this.planeGeometry = new THREE.PlaneBufferGeometry( 2, 2, 30, 30 )
       // points material to position the particles on the planes vertices
 
       //particles geometry
@@ -67,12 +70,24 @@ export default class Sketch {
           {
             value : 0
           },
-          uColor: 
+          uColor1: 
           {
             value: new THREE.Color( this.color )
-          }
+          },
+          uColor2: 
+          {
+            value: new THREE.Color( this.color2 )
+          },
+          uTexture:
+          {
+            value: this.particleTexture
+          },
         },
         side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        depthTest: false,
+        depthWrite: false,
         fragmentShader: fragment,
         vertexShader: vertex,
       })
@@ -137,5 +152,6 @@ export default class Sketch {
   new Sketch(
     {
     dom: document.getElementById('webGL'),
-    color: 0xffffff,
+    color: 0xff6600,
+    color2: 0xffffcc,
   });
