@@ -13,8 +13,8 @@ void main()
     vUv = uv;
     vPos = position;
 
-    vec4 mvPosition = modelViewMatrix * vec4( position, 1. );
-    gl_PointSize = 10. * ( 1. / - mvPosition.z );
+    vec4 mvPosition = modelViewMatrix * vec4( vPos, 1. );
+    gl_PointSize = 5. * ( 1. / - mvPosition.z );
     // size attenuation to reduce size based on position from camera
     gl_PointSize *= ( 1. / -mvPosition.z );
     gl_Position = projectionMatrix * mvPosition;
