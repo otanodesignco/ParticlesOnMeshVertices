@@ -30,13 +30,6 @@ export default class ParticleMesh
         // store vertices count of sample geometry
         const planeVerticesCount = this.sampleGeometry.attributes.position.array.length
 
-        let tmp = 
-        {
-          x: 0,
-          y: 0,
-          z: 0,
-        }
-        
         let coords = []
         // new float32array using the sample geometry vertices
         this.vertexArray = new Float32Array( planeVerticesCount )
